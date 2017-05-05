@@ -31,12 +31,21 @@ def custom_score(game, player):
         The heuristic value of the current game state to the specified player.
     """
 
-    player_moves = game.get_legal_moves()
-    opponent_moves = game.get_legal_moves(game.inactive_player)
+    if player is None:
+        player = game.active_player
 
-    print('custom_score', len(player_moves) - len(opponent_moves))
+    if game.is_loser(player):
+        return float("-inf")
 
-    return float(len(player_moves) - len(opponent_moves))
+    if game.is_winner(player):
+        return float("inf")
+
+    player_moves = len(game.get_legal_moves(player))
+    opponent_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    #print('custom_score', len(player_moves) - 2 * len(opponent_moves))
+
+    return float(player_moves - 2 * opponent_moves)
 
 
 def custom_score_2(game, player):
@@ -62,12 +71,21 @@ def custom_score_2(game, player):
         The heuristic value of the current game state to the specified player.
     """
 
-    player_moves = game.get_legal_moves()
-    opponent_moves = game.get_legal_moves(game.inactive_player)
+    if player is None:
+        player = self.active_player
 
-    print('custom_score', len(player_moves) - 2 * len(opponent_moves))
+    if game.is_loser(player):
+        return float("-inf")
 
-    return float(len(player_moves) - 2 * len(opponent_moves))
+    if game.is_winner(player):
+        return float("inf")
+
+    player_moves = len(game.get_legal_moves(player))
+    opponent_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    #print('custom_score', len(player_moves) - len(opponent_moves))
+
+    return float(player_moves - opponent_moves)
 
 
 def custom_score_3(game, player):
@@ -92,8 +110,10 @@ def custom_score_3(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
+    if player is None:
+        player = self.active_player
 
-    return float(len(game.get_legal_moves()))
+    return float(len(game.get_legal_moves(player)))
 
 
 class IsolationPlayer:
@@ -225,14 +245,14 @@ class MinimaxPlayer(IsolationPlayer):
         if not legal_moves:
             return (-1, -1)
 
-        print('minimax', depth, legal_moves, game.active_player)
+        #print('minimax', depth, legal_moves, game.active_player)
         for move in legal_moves:
-            print('MOVE', move);
+            #print('MOVE', move);
             board = game.forecast_move(move)
             scores[move] = self.minimax_score(board, depth-1)
-            print('SCORE', scores[move])
+            #print('SCORE', scores[move])
 
-        print('---scores', scores)
+        #print('---scores', scores)
         if game.active_player == self:
             return max(scores, key=scores.get)
 
@@ -251,13 +271,13 @@ class MinimaxPlayer(IsolationPlayer):
         if not legal_moves:
             return game.utility(self)
 
-        print('minimax_score', depth, legal_moves, game.active_player)
+        #print('minimax_score', depth, legal_moves, game.active_player)
 
         for move in legal_moves:
             board = game.forecast_move(move)
-            print('minimax_score board \n', board.to_string())
+            #print('minimax_score board \n', board.to_string())
             scores[move] = self.minimax_score(board, depth-1)
-            print('-move, score', move, scores[move])
+            #print('-move, score', move, scores[move])
 
         if game.active_player == self:
             return max(scores.values())
@@ -367,62 +387,56 @@ class AlphaBetaPlayer(IsolationPlayer):
                 testing.
         """
 
-        # game, depth, alpha, beta
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
 
-
-        #legal_moves = game.get_legal_moves()
-
-        #if not legal_moves:
-        #    return (-1, -1)
-
         result = self.alphabeta_recurs(game, depth, alpha, beta);
 
-        print('/ALPHABETA', result)
+        #print('/ALPHABETA', result)
         return result['move']
 
     def alphabeta_recurs(self, game, depth, alpha, beta):
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
 
+        maxval = game.active_player == self
+        minval = game.active_player != self
+        ab_move = (-1, -1)
+
+        #print('MAXVAL', maxval)
 
         # If depth is 0, just return the score
         if depth == 0:
             return dict(score = self.score(game, self), alpha = alpha, beta = beta)
 
-        maxval = game.active_player == self
-        minval = game.active_player != self
-        ab_move = (-1, -1)
-
         # initialize score
         if maxval:
             score = float("-inf")
             pruning_score = float("inf")
-            print('MAXVAL')
+            #print('MAXVAL')
         else:
             score = float("inf")
             pruning_score = float("-inf")
-            print('MINVAL')
+            #print('MINVAL')
 
         legal_moves = game.get_legal_moves()
         if not legal_moves:
             return dict(move = (-1, -1), score=pruning_score)
-            #return dict(score=game.utility(self))
 
-        print('alphabeta_recurs', depth, legal_moves, game.active_player)
+        #print('alphabeta_recurs', depth, legal_moves, game.active_player)
 
         for move in legal_moves:
             board = game.forecast_move(move)
-            print('alphabeta_recurs board \n', board.to_string())
-            #scores[move] = self.alphabeta_recurs(board, depth-1, alpha, beta)
+            #print('alphabeta_recurs board \n', board.to_string())
+
             result = self.alphabeta_recurs(board, depth-1, alpha, beta)
-            print('alphabeta_recurs result', result)
+            #print('alphabeta_recurs result', result)
+
 
             # If MINVAL and score is lower than lower limit, return (there is a previous MAXVAL with a branch that has a higher score)
             # If MAXVAL and score is higher that the upper limit, return (there is a prev MINVAL with a branch that has a lower score)
-            if (minval and result['score'] <= alpha) or (maxval and result['score'] >= beta):
-                print('AB pruning', pruning_score, 'alpha', alpha, 'beta', beta)
+            if (minval and result['score'] <= alpha) or (maxval and result['score'] >= beta) or alpha > beta:
+                #print('AB pruning', pruning_score, 'alpha', alpha, 'beta', beta)
                 return dict(score=pruning_score, alpha=alpha, beta=beta, move=(-1, -1))
 
             # If MAXVAL and score is higher than others, cache it and the move and replace lower limit
@@ -435,6 +449,7 @@ class AlphaBetaPlayer(IsolationPlayer):
                 beta = score = result['score']
                 ab_move = move
 
-            print('-move, score', ab_move, score, 'alpha', alpha, 'beta', beta, 'MAXVAL', maxval)
+            #print('-move, score', ab_move, score, 'alpha', alpha, 'beta', beta, 'MAXVAL', maxval)
+
 
         return dict(score=score, move=ab_move, alpha=alpha, beta=beta)
