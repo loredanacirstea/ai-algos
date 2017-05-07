@@ -31,8 +31,8 @@ def custom_score(game, player):
         The heuristic value of the current game state to the specified player.
     """
 
-    if player is None:
-        player = game.active_player
+    #if player is None:
+    #    player = game.active_player
 
     if game.is_loser(player):
         return float("-inf")
@@ -43,7 +43,7 @@ def custom_score(game, player):
     player_moves = len(game.get_legal_moves(player))
     opponent_moves = len(game.get_legal_moves(game.get_opponent(player)))
 
-    #print('custom_score', len(player_moves) - 2 * len(opponent_moves))
+    #xprint('custom_score', player_moves - 2 * opponent_moves, player)
 
     return float(player_moves - 2 * opponent_moves)
 
@@ -83,7 +83,7 @@ def custom_score_2(game, player):
     player_moves = len(game.get_legal_moves(player))
     opponent_moves = len(game.get_legal_moves(game.get_opponent(player)))
 
-    #print('custom_score', len(player_moves) - len(opponent_moves))
+    #xprint('custom_score', len(player_moves) - len(opponent_moves))
 
     return float(player_moves - opponent_moves)
 
@@ -115,6 +115,10 @@ def custom_score_3(game, player):
 
     return float(len(game.get_legal_moves(player)))
 
+def xprint(*args):
+    #print(args)
+    #xprint( "XXX"+" ".join(map(str,args))+"XXX")
+    return
 
 class IsolationPlayer:
     """Base class for minimax and alphabeta agents -- this class is never
@@ -143,7 +147,7 @@ class IsolationPlayer:
         self.score = score_fn
         self.time_left = None
         self.TIMER_THRESHOLD = timeout
-
+        self.testTrees = []
 
 class MinimaxPlayer(IsolationPlayer):
     """Game-playing agent that chooses a move using depth-limited minimax
@@ -197,93 +201,53 @@ class MinimaxPlayer(IsolationPlayer):
         return best_move
 
     def minimax(self, game, depth):
-        """Implement depth-limited minimax search algorithm as described in
-        the lectures.
-
-        This should be a modified version of MINIMAX-DECISION in the AIMA text.
-        https://github.com/aimacode/aima-pseudocode/blob/master/md/Minimax-Decision.md
-
-        **********************************************************************
-            You MAY add additional methods to this class, or define helper
-                 functions to implement the required functionality.
-        **********************************************************************
-
-        Parameters
-        ----------
-        game : isolation.Board
-            An instance of the Isolation game `Board` class representing the
-            current game state
-
-        depth : int
-            Depth is an integer representing the maximum number of plies to
-            search in the game tree before aborting
-
-        Returns
-        -------
-        (int, int)
-            The board coordinates of the best move found in the current search;
-            (-1, -1) if there are no legal moves
-
-        Notes
-        -----
-            (1) You MUST use the `self.score()` method for board evaluation
-                to pass the project tests; you cannot call any other evaluation
-                function directly.
-
-            (2) If you use any helper functions (e.g., as shown in the AIMA
-                pseudocode) then you must copy the timer check into the top of
-                each helper function or else your agent will timeout during
-                testing.
-        """
-
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
 
-        scores = dict()
-        legal_moves = game.get_legal_moves(self)
-
+        legal_moves = game.get_legal_moves()
         if not legal_moves:
+            #xprint('no legal_moves left')
             return (-1, -1)
 
-        #print('minimax', depth, legal_moves, game.active_player)
+        scores = dict()
         for move in legal_moves:
-            #print('MOVE', move);
-            board = game.forecast_move(move)
-            scores[move] = self.minimax_score(board, depth-1)
-            #print('SCORE', scores[move])
+            scores[move] = self.minvalue(game.forecast_move(move), depth-1)
+        #xprint('scores', scores, max(scores, key=scores.get))
+        return max(scores, key=scores.get)
 
-        #print('---scores', scores)
-        if game.active_player == self:
-            return max(scores, key=scores.get)
-
-        return min(scores, key=scores.get)
-
-    def minimax_score(self, game, depth):
+    def maxvalue(self, game, depth):
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
 
-        # Return the actual score of the board if depth is 0
-        if depth == 0:
-            return self.score(game, self)
-
-        scores = dict()
         legal_moves = game.get_legal_moves()
         if not legal_moves:
             return game.utility(self)
-
-        #print('minimax_score', depth, legal_moves, game.active_player)
-
+            #return game.utility(game.active_player)
+        if depth <= 0:
+            return self.score(game, self)
+        v = float("-inf")
         for move in legal_moves:
             board = game.forecast_move(move)
-            #print('minimax_score board \n', board.to_string())
-            scores[move] = self.minimax_score(board, depth-1)
-            #print('-move, score', move, scores[move])
+            v = max(v, self.minvalue(board, depth-1))
 
-        if game.active_player == self:
-            return max(scores.values())
+        return v
 
-        return min(scores.values())
+    def minvalue(self, game, depth):
+        if self.time_left() < self.TIMER_THRESHOLD:
+            raise SearchTimeout()
 
+        legal_moves = game.get_legal_moves()
+        if not legal_moves:
+            return game.utility(self)
+            #return game.utility(game.active_player)
+        if depth <= 0:
+            return self.score(game, self)
+        v = float("inf")
+        for move in legal_moves:
+            board = game.forecast_move(move)
+            v = min(v, self.maxvalue(board, depth-1))
+
+        return v
 
 class AlphaBetaPlayer(IsolationPlayer):
     """Game-playing agent that chooses a move using iterative deepening minimax
@@ -291,7 +255,7 @@ class AlphaBetaPlayer(IsolationPlayer):
     make sure it returns a good move before the search time limit expires.
     """
 
-    def get_move(self, game, time_left):
+    def get_move(self, game, time_left, tree=None):
         """Search for the best move from the available legal moves and return a
         result before the time limit expires.
 
@@ -323,6 +287,11 @@ class AlphaBetaPlayer(IsolationPlayer):
         """
         self.time_left = time_left
 
+        # For testing purposes
+        xprint('tree', tree)
+        if tree:
+            return self.alphabeta(None, 6, float("-inf"), float("inf"), tree)
+
         # Initialize the best move so that this function returns something
         # in case the search fails due to timeout
         best_move = (-1, -1)
@@ -341,7 +310,7 @@ class AlphaBetaPlayer(IsolationPlayer):
         # Return the best move from the last completed search iteration
         return best_move
 
-    def alphabeta(self, game, depth, alpha=float("-inf"), beta=float("inf")):
+    def alphabeta(self, game, depth, alpha=float("-inf"), beta=float("inf"), tree=None):
         """Implement depth-limited minimax search with alpha-beta pruning as
         described in the lectures.
 
@@ -389,67 +358,169 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
+        xprint('--------------------------------')
+        xprint('tree', tree)
+        #xprint('ALPHABETA game.active_player', game.active_player)
+        temptree = None
+        new_board = None
+        if tree:
+            legal_moves = range(0, len(tree))
+        else:
+            legal_moves = game.get_legal_moves()
+        #xprint('ALPHABETA legal_moves', legal_moves)
+        if not legal_moves:
+            xprint('no legal_moves left')
+            return (-1, -1)
 
-        result = self.alphabeta_recurs(game, depth, alpha, beta);
+        best_move = legal_moves[0]
+        for move in legal_moves:
+            if tree:
+                temptree = tree[move]
+            else:
+                new_board = game.forecast_move(move)
+            v = self.minvalue(new_board, depth-1, alpha, beta, temptree)
+            #v, testTree = self.minvalue(new_board, depth-1, alpha, beta, temptree)
+            if v >= beta:
+                break
+            alpha = max(alpha, v)
+            best_move = move
 
-        #print('/ALPHABETA', result)
-        return result['move']
+        if tree:
+            self.testTrees.append(testTree)
+            return alpha
+        return best_move
 
-    def alphabeta_recurs(self, game, depth, alpha, beta):
+    def maxvalue(self, game, depth, alpha, beta, tree):
         if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
-
-        maxval = game.active_player == self
-        minval = game.active_player != self
-        ab_move = (-1, -1)
-
-        #print('MAXVAL', maxval)
-
-        # If depth is 0, just return the score
-        if depth == 0:
-            return dict(score = self.score(game, self), alpha = alpha, beta = beta)
-
-        # initialize score
-        if maxval:
-            score = float("-inf")
-            pruning_score = float("inf")
-            #print('MAXVAL')
+        xprint('--', 'depth', depth, 'tree', tree, 'MAXVALUE', alpha, beta)
+        if tree or tree == 0:
+            if not isinstance(tree, list):
+                return tree
         else:
-            score = float("inf")
-            pruning_score = float("-inf")
-            #print('MINVAL')
+            if depth <= 0:
+                return self.score(game, self)
 
-        legal_moves = game.get_legal_moves()
+        temptree = None
+        new_board = None
+        if tree:
+            legal_moves = range(0, len(tree))
+        else:
+            legal_moves = game.get_legal_moves(self)
+        #xprint('ALPHABETA MAXVALUE game.active_player', game.active_player, 'depth, alpha, beta', depth, alpha, beta, 'legal_moves', legal_moves)
         if not legal_moves:
-            return dict(move = (-1, -1), score=pruning_score)
+            xprint('no legal_moves')
+            return game.utility(self)
+            #return game.utility(game.active_player)
 
-        #print('alphabeta_recurs', depth, legal_moves, game.active_player)
-
+        v = float("-inf")
         for move in legal_moves:
-            board = game.forecast_move(move)
-            #print('alphabeta_recurs board \n', board.to_string())
+            if tree:
+                temptree = tree[move]
+            else:
+                new_board = game.forecast_move(move)
+            v = max(v, self.minvalue(new_board, depth-1, alpha, beta, temptree))
+            #res, testTree = self.minvalue(new_board, depth-1, alpha, beta, temptree)
+            #v = max(v, res)
 
-            result = self.alphabeta_recurs(board, depth-1, alpha, beta)
-            #print('alphabeta_recurs result', result)
+            xprint('**', 'depth', depth, 'tree', tree, 'MAXVALUE result to max(minvalue)', v, 'for temptree ', temptree, 'v >= beta', v >= beta, 'alpha', alpha, 'beta', beta)
+            if v >= beta:
+                xprint('_______PRUNING tree', tree, ' after ', temptree)
+                return v
+            alpha = max(alpha, v)
+            xprint('max(alpha, v)', alpha, beta)
+
+        #return v, testTree
+        return v
+
+    def minvalue(self, game, depth, alpha, beta, tree):
+        if self.time_left() < self.TIMER_THRESHOLD:
+            raise SearchTimeout()
+        xprint('--', 'depth', depth, 'tree', tree, 'MINVALUE', alpha, beta)
+        if tree or tree == 0:
+            if not isinstance(tree, list):
+                return tree
+        else:
+            if depth <= 0:
+                return self.score(game, self)
+        temptree = None
+        new_board = None
+        if tree:
+            legal_moves = range(0, len(tree))
+        else:
+            legal_moves = game.get_legal_moves()
+        #xprint('ALPHABETA MINVALUE game.active_player', game.active_player, 'depth, alpha, beta', depth, alpha, beta, 'legal_moves', legal_moves)
+        if not legal_moves:
+            xprint('no legal_moves')
+            return game.utility(self)
+            #return game.utility(game.active_player)
+
+        v = float("inf")
+        for move in legal_moves:
+            if tree:
+                temptree = tree[move]
+            else:
+                new_board = game.forecast_move(move)
+            v = min(v, self.maxvalue(new_board, depth-1, alpha, beta, temptree))
+
+            xprint('**', 'depth', depth, 'tree', tree, 'MINVALUE result to min(maxvalue)', v, 'for temptree ', temptree, 'v <= alpha', v <= alpha, 'alpha', alpha, 'beta', beta)
+            if v <= alpha:
+                xprint('_______PRUNING tree', tree, ' after ', temptree)
+                return v
+            beta = min(beta, v)
+            xprint('min(beta, v)', alpha, beta)
+
+        return v
 
 
-            # If MINVAL and score is lower than lower limit, return (there is a previous MAXVAL with a branch that has a higher score)
-            # If MAXVAL and score is higher that the upper limit, return (there is a prev MINVAL with a branch that has a lower score)
-            if (minval and result['score'] <= alpha) or (maxval and result['score'] >= beta) or alpha > beta:
-                #print('AB pruning', pruning_score, 'alpha', alpha, 'beta', beta)
-                return dict(score=pruning_score, alpha=alpha, beta=beta, move=(-1, -1))
-
-            # If MAXVAL and score is higher than others, cache it and the move and replace lower limit
-            if maxval and result['score'] > alpha:
-                alpha = score = result['score']
-                ab_move = move
-
-            # If MINVAL and score is lower than others, cache it and the move and replace upper limit
-            if minval and result['score'] < beta:
-                beta = score = result['score']
-                ab_move = move
-
-            #print('-move, score', ab_move, score, 'alpha', alpha, 'beta', beta, 'MAXVAL', maxval)
-
-
-        return dict(score=score, move=ab_move, alpha=alpha, beta=beta)
+# Testing alpha beta algo
+# player = AlphaBetaPlayer()
+# player.set_tree = tree
+# root = player.get_move(None, lambda : 20, tree)
+# print('TreeTest result', root)
+tree = [
+        [
+            [
+                [
+                    [-1, 13],
+                    [1, 6]
+                ],
+                [
+                    [-16, 13],
+                    [-13, -10]
+                ]
+            ],
+            [
+                [
+                    [-4, 9],
+                    [-20, -13]
+                ],
+                [
+                    [-16, -13],
+                    [-4, 11]
+                ]
+            ],
+        ],
+        [
+            [
+                [
+                    [-14, -7],
+                    [0, 19]
+                ],
+                [
+                    [-14, -7],
+                    [12, -15]
+                ]
+            ],
+            [
+                [
+                    [2, -16],
+                    [-13, 4]
+                ],
+                [
+                    [2, -1],
+                    [-5, -9]
+                ]
+            ]
+        ]
+    ]
