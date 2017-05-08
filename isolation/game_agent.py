@@ -382,8 +382,9 @@ class AlphaBetaPlayer(IsolationPlayer):
             #v, testTree = self.minvalue(new_board, depth-1, alpha, beta, temptree)
             if v >= beta:
                 break
-            alpha = max(alpha, v)
-            best_move = move
+            if v > alpha:
+                alpha = v
+                best_move = move
 
         if tree:
             self.testTrees.append(testTree)
