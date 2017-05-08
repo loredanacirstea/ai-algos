@@ -380,8 +380,6 @@ class AlphaBetaPlayer(IsolationPlayer):
                 new_board = game.forecast_move(move)
             v = self.minvalue(new_board, depth-1, alpha, beta, temptree)
             #v, testTree = self.minvalue(new_board, depth-1, alpha, beta, temptree)
-            if v >= beta:
-                break
             if v > alpha:
                 alpha = v
                 best_move = move
