@@ -31,9 +31,6 @@ def custom_score(game, player):
         The heuristic value of the current game state to the specified player.
     """
 
-    #if player is None:
-    #    player = game.active_player
-
     if game.is_loser(player):
         return float("-inf")
 
@@ -71,9 +68,6 @@ def custom_score_2(game, player):
         The heuristic value of the current game state to the specified player.
     """
 
-    if player is None:
-        player = self.active_player
-
     if game.is_loser(player):
         return float("-inf")
 
@@ -110,10 +104,16 @@ def custom_score_3(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    if player is None:
-        player = self.active_player
 
-    return float(len(game.get_legal_moves(player)))
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    player_moves = len(game.get_legal_moves(player))
+
+    return float(player_moves)
 
 def xprint(*args):
     #print(args)
