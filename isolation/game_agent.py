@@ -1,51 +1,9 @@
 import random
 
-
-def xprint(*args):
-    #print(args)
-    return
-
 class SearchTimeout(Exception):
     """Subclass base exception for code clarity. """
     pass
 
-# 2*my-opp
-def custom_score_2(game, player):
-    """Calculate the heuristic value of a game state from the point of view
-    of the given player.
-
-    This should be the best heuristic function for your project submission.
-
-    Note: this function should be called from within a Player instance as
-    `self.score()` -- you should not need to call this function directly.
-
-    Parameters
-    ----------
-    game : `isolation.Board`
-        An instance of `isolation.Board` encoding the current state of the
-        game (e.g., player locations and blocked cells).
-
-    player : object
-        A player instance in the current game (i.e., an object corresponding to
-        one of the player objects `game.__player_1__` or `game.__player_2__`.)
-
-    Returns
-    -------
-    float
-        The heuristic value of the current game state to the specified player.
-    """
-
-    if game.is_loser(player):
-        return float("-inf")
-
-    if game.is_winner(player):
-        return float("inf")
-
-    own_moves = len(game.get_legal_moves(player))
-    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
-    return float(2*own_moves - opp_moves)
-
-# improved_score
 def custom_score(game, player):
     """Calculate the heuristic value of a game state from the point of view
     of the given player.
@@ -68,7 +26,17 @@ def custom_score(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
+    return custom_devide(game, player)
 
+def custom_score_2(game, player):
+    return custom_divide_opp(game, player)
+
+def custom_score_3(game, player):
+    return custom_center_improved(game, player)
+
+
+# 52  |  48
+def custom_devide(game, player):
     if game.is_loser(player):
         return float("-inf")
 
@@ -77,39 +45,105 @@ def custom_score(game, player):
 
     own_moves = len(game.get_legal_moves(player))
     opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
-    return float(own_moves - opp_moves)
 
-# same as open_move_score
-def custom_score_3(game, player):
-    """Calculate the heuristic value of a game state from the point of view
-    of the given player.
+    return (0.1 + own_moves) / (0.1 + opp_moves)
 
-    Note: this function should be called from within a Player instance as
-    `self.score()` -- you should not need to call this function directly.
-
-    Parameters
-    ----------
-    game : `isolation.Board`
-        An instance of `isolation.Board` encoding the current state of the
-        game (e.g., player locations and blocked cells).
-
-    player : object
-        A player instance in the current game (i.e., an object corresponding to
-        one of the player objects `game.__player_1__` or `game.__player_2__`.)
-
-    Returns
-    -------
-    float
-        The heuristic value of the current game state to the specified player.
-    """
-
+# 50  |  50 ; 102 |  98 ;  70.8%
+def custom_divide_opp(game, player):
     if game.is_loser(player):
         return float("-inf")
 
     if game.is_winner(player):
         return float("inf")
 
-    return float(len(game.get_legal_moves(player)))
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return (0.1 + own_moves) / (0.1 + opp_moves * 1.2)
+
+def custom_center_improved(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    blanks = len(game.get_blank_spaces())
+
+    if blanks > (game.width * game.height) / 2:
+        # Minimize distance to center square
+        w, h = game.width / 2., game.height / 2.
+        y, x = game.get_player_location(player)
+        return - float((h - y)**2 + (w - x)**2)
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return own_moves - opp_moves
+
+# 46  |  54 ; 56  |  44; 100 |  100 ;  70.8%
+def custom_score_1(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return ((0.1 + (own_moves) * 1.5) /
+            ((0.1 + opp_moves) * 1.0))
+
+def custom_center_devide(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    blanks = len(game.get_blank_spaces())
+
+    if blanks > (game.width * game.height) / 2:
+        # Minimize distance to center square
+        w, h = game.width / 2., game.height / 2.
+        y, x = game.get_player_location(player)
+        return - float((h - y)**2 + (w - x)**2)
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return float(0.1 + own_moves) / (0.1 + opp_moves * 1.2)
+
+# dist to opp ( 43  |  57 )
+def custom_distance_to_opponent(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    w, h = game.width / 2., game.height / 2.
+    y, x = game.get_player_location(player)
+    y2, x2 = game.get_player_location(game.get_opponent(player))
+
+    # Distance to other opp
+    return - float((y2 - y)**2 + (x2 - x)**2)
+
+# center_dist ( 38  |  62 )
+def custom_center(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    w, h = game.width / 2., game.height / 2.
+    y, x = game.get_player_location(player)
+
+    # Distance to center square
+    return - float((h - y)**2 + (w - x)**2)
+
 
 class IsolationPlayer:
     """Base class for minimax and alphabeta agents -- this class is never
@@ -306,7 +340,7 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         except SearchTimeout:
             pass  # Handle any actions required after timeout as needed
-        xprint('-----ALPHABETA BEST', best_move)
+
         # Return the best move from the last completed search iteration
         return best_move
 
@@ -379,7 +413,6 @@ class AlphaBetaPlayer(IsolationPlayer):
             if v > alpha:
                 alpha = v
                 best_move = move
-        xprint('ALPHABETA depth', depth, ' scores', scores, 'best_move', best_move)
 
         # Return move that has the greatest score associated with it
         return best_move
