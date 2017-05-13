@@ -21,7 +21,9 @@ AB_Custom: (0.1 + own_moves) / (0.1 + opp_moves * 1.2)
 AB_Custom_2: (0.1 + own_moves) / (0.1 + opp_moves)
 AB_Custom_3: if > board/2 empty: (- square distance to center) else: own_moves - opp_moves
 
-The algorithm that had the most wins was AB_Custom_2, with 1.8% more wins than AB_Improved. This was the heuristic ultimately chosen as primary.
+The algorithm that had the most wins was AB_Custom_2 with 70%. It surpassed AB_Improved with 1.8% more wins. However, when playing with AB_Improved directly, it only won 48% of the matches.
+AB_Custom_2 is also the easiest to implement from the three and has the smallest number of calculations to be performed. Due to these reasons,  AB_Custom_2 was the heuristic ultimately chosen as primary.
+
 
 Observations:
 
