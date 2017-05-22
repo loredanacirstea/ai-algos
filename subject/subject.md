@@ -11,6 +11,11 @@ Monty Hall Problem
 Search Algorithm
 
 Depth-First Search
+Breath-First Search
+A* Search | Best estimated total path cost first
+Uniform Cost Search
+Bidirectional Search
+Greedy Search
 Minimax Algorithm
 
 Depth-Limited Search
@@ -30,5 +35,21 @@ Horizon Effect | algorithm does not see an outcome that is clear for a human pla
 Killer Move Heuristic | trying the best moves first
 Transposition Table | hash table of previously seen positions
 Heuristic Evaluation Function | function which returns an estimate of the expected utility of the game from a given position
+Iterative Heuristics | static evaluation function results from the successors of a chosen node are used to provide the result for the node
+
+Simulated Annealing
+Random Restart
+Local Beam Search
+Genetic Algorithm
+Genetic Algorithm Crossover
+Genetic Algorithm Mutation
+
+Constraint Satisfaction
+Backtracking
+Forward Checking
+Minimum Remaining Values
+Least Constraining Value
 
 NP Hard Problem
+
+State Space | the space where all the possible states of a problem reside
