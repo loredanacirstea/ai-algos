@@ -47,8 +47,22 @@ Genetic Algorithm Mutation
 Constraint Satisfaction
 Backtracking
 Forward Checking
-Minimum Remaining Values
-Least Constraining Value
+Minimum Remaining Values | choose the next node based on what node has less options from which we can choose
+Least Constraining Value | choose the next node based on the fact that one of his options can be chosen so that you maximize the options for the other graphs
+Constraint Hypergraph
+
+Logic and reasoning
+First Order Logic | Objects, relations, functions that can be true or false or unknown
+Propositional Logic | Facts that can be true or false or unknown
+Probability Theory | Facts that can be a real number in the range [0,1]
+Resolution Algorithm
+Graph Plan
+
+Classical Planning
+Progression Search
+Regression Search
+Plan Space Search
+Planning Domain Definition Language
 
 NP Hard Problem
 
