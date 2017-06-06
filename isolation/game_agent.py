@@ -26,7 +26,7 @@ def custom_score(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    return custom_devide(game, player)
+    return custom_devide_best(game, player)
 
 def custom_score_2(game, player):
     return custom_divide_opp(game, player)
@@ -47,6 +47,17 @@ def custom_devide(game, player):
     opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
 
     return (0.1 + own_moves) / (0.1 + opp_moves)
+
+def custom_devide_best(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+    return (0.1 + 0.8 * own_moves) / (0.1 + 0.4 * opp_moves)
 
 # 50  |  50 ; 102 |  98 ;  70.8%
 def custom_divide_opp(game, player):
