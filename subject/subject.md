@@ -64,6 +64,21 @@ Regression Search
 Plan Space Search
 Planning Domain Definition Language
 
+Bayes Network
+Simple Bayes Networks
+Conditional Independence
+Bayes Networks
+Diagnostic Reasoning
+D-Separation
+Parameter Counts
+Inference in Bayes Network
+Confounding Cause
+
+Probability
+Complementary Probability
+Independence
+Bayes Rule
+
 NP Hard Problem
 
 State Space | the space where all the possible states of a problem reside
