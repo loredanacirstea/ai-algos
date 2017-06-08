@@ -71,13 +71,33 @@ Bayes Networks
 Diagnostic Reasoning
 D-Separation
 Parameter Counts
-Inference in Bayes Network
+Causal Direction
+Variable Elimination
+Joining Factors
+Prababilistic Inference
+Appoximate Inference Sampling
+Rejection Sampling
+Likelihood Weighting
+Gibbs Sampling
+Markov Chain Monte Carlo
+Enumeration
+
 Confounding Cause
+Explaining Away
 
 Probability
 Complementary Probability
 Independence
 Bayes Rule
+Joint Probability Distribution
+Posterior Probability Distribution
+
+Dynamic Time Warp
+Sakoe Chiba Bounds
+Hidden Markov Model
+Self Transitions
+Viterbi Trellis
+
 
 NP Hard Problem
 
