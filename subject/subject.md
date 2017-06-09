@@ -97,6 +97,14 @@ Sakoe Chiba Bounds
 Hidden Markov Model
 Self Transitions
 Viterbi Trellis
+Baum Welch Re-estimation
+Multidemensional Output Probabilities
+Mixture Of Gaussians
+Stochastic Beam Search
+Context Training
+Statistical Grammar | Take into consideration the frequency with which combinations of words occur
+State Tying
+Segmentally Boosted HMMs
 
 
 NP Hard Problem
