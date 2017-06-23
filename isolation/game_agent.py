@@ -4,7 +4,82 @@ class SearchTimeout(Exception):
     """Subclass base exception for code clarity. """
     pass
 
-def custom_score(game, player):
+def div_score_wrap(params):
+    p1 = params[0]
+    p2 = params[1]
+    def div_score(game, player):
+        if game.is_loser(player):
+            return float("-inf")
+
+        if game.is_winner(player):
+            return float("inf")
+
+        own_moves = len(game.get_legal_moves(player))
+        opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+        return (0.1 + p1 * own_moves) / (0.1 + p2 * opp_moves)
+    return div_score;
+
+def minus_score_wrap(params):
+    p1 = params[0]
+    p2 = params[1]
+    def minus_score(game, player):
+        if game.is_loser(player):
+            return float("-inf")
+
+        if game.is_winner(player):
+            return float("inf")
+
+        own_moves = len(game.get_legal_moves(player))
+        opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+        return p1 * own_moves - p2 * opp_moves
+    return minus_score;
+
+def center_div_score_wrap(params):
+    p1 = params[0]
+    p2 = params[1]
+    def center_div_score(game, player):
+        if game.is_loser(player):
+            return float("-inf")
+
+        if game.is_winner(player):
+            return float("inf")
+
+        blanks = len(game.get_blank_spaces())
+
+        if blanks > (game.width * game.height) / 2:
+            # Minimize distance to center square
+            w, h = game.width / 2., game.height / 2.
+            y, x = game.get_player_location(player)
+            return - float((h - y)**2 + (w - x)**2)
+
+        own_moves = len(game.get_legal_moves(player))
+        opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+        return (0.1 + p1 * own_moves) / (0.1 + p2 * opp_moves)
+
+    return center_div_score
+
+def cluster_score(game, player):
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    dist = 0
+    y, x = game.get_player_location(player)
+    dist = float(x**2 + y**2)
+    blanks = len(game.get_blank_spaces())
+    if blanks > (game.width * game.height) / 2.5:
+        dist = - dist
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return dist + own_moves - opp_moves
+
+
+
+def custom_score(game, player, p1=1, p2=1):
     """Calculate the heuristic value of a game state from the point of view
     of the given player.
 
@@ -26,41 +101,18 @@ def custom_score(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    return custom_devide_best(game, player)
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return (0.1 + p1 * own_moves) / (0.1 + p2 * opp_moves)
 
 def custom_score_2(game, player):
-    return custom_divide_opp(game, player)
-
-def custom_score_3(game, player):
-    return custom_center_improved(game, player)
-
-
-# 52  |  48
-def custom_devide(game, player):
-    if game.is_loser(player):
-        return float("-inf")
-
-    if game.is_winner(player):
-        return float("inf")
-
-    own_moves = len(game.get_legal_moves(player))
-    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
-
-    return (0.1 + own_moves) / (0.1 + opp_moves)
-
-def custom_devide_best(game, player):
-    if game.is_loser(player):
-        return float("-inf")
-
-    if game.is_winner(player):
-        return float("inf")
-
-    own_moves = len(game.get_legal_moves(player))
-    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
-    return (0.1 + 0.8 * own_moves) / (0.1 + 0.4 * opp_moves)
-
-# 50  |  50 ; 102 |  98 ;  70.8%
-def custom_divide_opp(game, player):
     if game.is_loser(player):
         return float("-inf")
 
@@ -72,7 +124,7 @@ def custom_divide_opp(game, player):
 
     return (0.1 + own_moves) / (0.1 + opp_moves * 1.2)
 
-def custom_center_improved(game, player):
+def custom_score_3(game, player):
     if game.is_loser(player):
         return float("-inf")
 
@@ -92,6 +144,8 @@ def custom_center_improved(game, player):
 
     return own_moves - opp_moves
 
+
+# Some of the other tested heuristics:
 # 46  |  54 ; 56  |  44; 100 |  100 ;  70.8%
 def custom_score_1(game, player):
     if game.is_loser(player):
@@ -178,7 +232,7 @@ class IsolationPlayer:
         positive value large enough to allow the function to return before the
         timer expires.
     """
-    def __init__(self, search_depth=3, score_fn=custom_score, timeout=10.):
+    def __init__(self, search_depth=3, score_fn=custom_score, timeout=15., params=()):
         self.search_depth = search_depth
         self.score = score_fn
         self.time_left = None
@@ -411,14 +465,14 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         # Initiate best_move with first legal move to avoid forfeiting if all scores = -inf
         best_move = legal_moves[0]
-        scores = dict()
+        #scores = dict()
 
         # Initiate depth-first search and store scores & moves
         # Returning the maximum of scores is equivalent to calling maxvalue
         # So we call minvalue inside the for loop
         for move in legal_moves:
             v = self.minvalue(game.forecast_move(move), depth-1, alpha, beta)
-            scores[move] = v
+            #scores[move] = v
 
             # Memorize move and change lower limit if score is greater that previous ones
             if v > alpha:

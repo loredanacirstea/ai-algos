@@ -1,0 +1,296 @@
+*************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.0/0.0  ABc_0.0/0.2  ABc_0.0/0.4  ABc_0.0/0.6  ABc_0.0/0.8  ABc_0.0/1.0  ABc_0.0/1.2  ABc_0.0/1.4  ABc_0.0/1.6  ABc_0.0/1.8
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   19  |  21    24  |  16    22  |  18    20  |  20    26  |  14    15  |  25    21  |  19    22  |  18    21  |  19    24  |  16
+--------------------------------------------------------------------------
+          Win Rate:      47.5%         60.0%         55.0%         50.0%         65.0%         37.5%         52.5%         55.0%         52.5%         60.0%
+
+There were 6.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.0/2.0  ABc_0.0/2.2  ABc_0.0/2.4  ABc_0.0/2.6  ABc_0.0/2.8  ABc_0.0/3.0  ABc_0.2/0.0  ABc_0.2/0.2  ABc_0.2/0.4  ABc_0.2/0.6
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   20  |  20    23  |  17    19  |  21    20  |  20    18  |  22    19  |  21    19  |  21    18  |  22    22  |  18    19  |  21
+--------------------------------------------------------------------------
+          Win Rate:      50.0%         57.5%         47.5%         50.0%         45.0%         47.5%         47.5%         45.0%         55.0%         47.5%
+
+There were 2.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.2/0.8  ABc_0.2/1.0  ABc_0.2/1.2  ABc_0.2/1.4  ABc_0.2/1.6  ABc_0.2/1.8  ABc_0.2/2.0  ABc_0.2/2.2  ABc_0.2/2.4  ABc_0.2/2.6
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   17  |  23    15  |  25    17  |  23    19  |  21    19  |  21    18  |  22    21  |  19    18  |  22    20  |  20    22  |  18
+--------------------------------------------------------------------------
+          Win Rate:      42.5%         37.5%         42.5%         47.5%         47.5%         45.0%         52.5%         45.0%         50.0%         55.0%
+
+There were 3.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.2/2.8  ABc_0.2/3.0  ABc_0.4/0.0  ABc_0.4/0.2  ABc_0.4/0.4  ABc_0.4/0.6  ABc_0.4/0.8  ABc_0.4/1.0  ABc_0.4/1.2  ABc_0.4/1.4
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   17  |  23    18  |  22    20  |  20    22  |  18    25  |  15    16  |  24    22  |  18    20  |  20    20  |  20    26  |  14
+--------------------------------------------------------------------------
+          Win Rate:      42.5%         45.0%         50.0%         55.0%         62.5%         40.0%         55.0%         50.0%         50.0%         65.0%
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.4/1.6  ABc_0.4/1.8  ABc_0.4/2.0  ABc_0.4/2.2  ABc_0.4/2.4  ABc_0.4/2.6  ABc_0.4/2.8  ABc_0.4/3.0  ABc_0.6/0.0  ABc_0.6/0.2
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   17  |  23    24  |  16    22  |  18    20  |  20    20  |  20    19  |  21    24  |  16    21  |  19    18  |  22    20  |  20
+--------------------------------------------------------------------------
+          Win Rate:      42.5%         60.0%         55.0%         50.0%         50.0%         47.5%         60.0%         52.5%         45.0%         50.0%
+
+There were 2.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.6/0.4  ABc_0.6/0.6  ABc_0.6/0.8  ABc_0.6/1.0  ABc_0.6/1.2  ABc_0.6/1.4  ABc_0.6/1.6  ABc_0.6/1.8  ABc_0.6/2.0  ABc_0.6/2.2
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   20  |  20    21  |  19    22  |  18    23  |  17    22  |  18    17  |  23    24  |  16    18  |  22    21  |  19    23  |  17
+--------------------------------------------------------------------------
+          Win Rate:      50.0%         52.5%         55.0%         57.5%         55.0%         42.5%         60.0%         45.0%         52.5%         57.5%
+
+There were 1.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.6/2.4  ABc_0.6/2.6  ABc_0.6/2.8  ABc_0.6/3.0  ABc_0.8/0.0  ABc_0.8/0.2  ABc_0.8/0.4  ABc_0.8/0.6  ABc_0.8/0.8  ABc_0.8/1.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   23  |  17    23  |  17    23  |  17    19  |  21    19  |  21    18  |  22    19  |  21    13  |  27    28  |  12    21  |  19
+--------------------------------------------------------------------------
+          Win Rate:      57.5%         57.5%         57.5%         47.5%         47.5%         45.0%         47.5%         32.5%         70.0%         52.5%
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_0.8/1.2  ABc_0.8/1.4  ABc_0.8/1.6  ABc_0.8/1.8  ABc_0.8/2.0  ABc_0.8/2.2  ABc_0.8/2.4  ABc_0.8/2.6  ABc_0.8/2.8  ABc_0.8/3.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   17  |  23    17  |  23    17  |  23    23  |  17    21  |  19    20  |  20    20  |  20    22  |  18    20  |  20    18  |  22
+--------------------------------------------------------------------------
+          Win Rate:      42.5%         42.5%         42.5%         57.5%         52.5%         50.0%         50.0%         55.0%         50.0%         45.0%
+
+There were 4.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.0/0.0  ABc_1.0/0.2  ABc_1.0/0.4  ABc_1.0/0.6  ABc_1.0/0.8  ABc_1.0/1.0  ABc_1.0/1.2  ABc_1.0/1.4  ABc_1.0/1.6  ABc_1.0/1.8
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   21  |  19    17  |  23    24  |  16    20  |  20    16  |  24    23  |  17    19  |  21    20  |  20    25  |  15    15  |  25
+--------------------------------------------------------------------------
+          Win Rate:      52.5%         42.5%         60.0%         50.0%         40.0%         57.5%         47.5%         50.0%         62.5%         37.5%
+
+There were 1.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.0/2.0  ABc_1.0/2.2  ABc_1.0/2.4  ABc_1.0/2.6  ABc_1.0/2.8  ABc_1.0/3.0  ABc_1.2/0.0  ABc_1.2/0.2  ABc_1.2/0.4  ABc_1.2/0.6
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   18  |  22    18  |  22    20  |  20    20  |  20    20  |  20    24  |  16    16  |  24    19  |  21    23  |  17    20  |  20
+--------------------------------------------------------------------------
+          Win Rate:      45.0%         45.0%         50.0%         50.0%         50.0%         60.0%         40.0%         47.5%         57.5%         50.0%
+
+There were 4.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.2/0.8  ABc_1.2/1.0  ABc_1.2/1.2  ABc_1.2/1.4  ABc_1.2/1.6  ABc_1.2/1.8  ABc_1.2/2.0  ABc_1.2/2.2  ABc_1.2/2.4  ABc_1.2/2.6
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   26  |  14    24  |  16    18  |  22    18  |  22    20  |  20    24  |  16    20  |  20    20  |  20    21  |  19    22  |  18
+--------------------------------------------------------------------------
+          Win Rate:      65.0%         60.0%         45.0%         45.0%         50.0%         60.0%         50.0%         50.0%         52.5%         55.0%
+
+There were 3.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.2/2.8  ABc_1.2/3.0  ABc_1.4/0.0  ABc_1.4/0.2  ABc_1.4/0.4  ABc_1.4/0.6  ABc_1.4/0.8  ABc_1.4/1.0  ABc_1.4/1.2  ABc_1.4/1.4
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   21  |  19    21  |  19    19  |  21    22  |  18    24  |  16    18  |  22    19  |  21    23  |  17    18  |  22    21  |  19
+--------------------------------------------------------------------------
+          Win Rate:      52.5%         52.5%         47.5%         55.0%         60.0%         45.0%         47.5%         57.5%         45.0%         52.5%
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.4/1.6  ABc_1.4/1.8  ABc_1.4/2.0  ABc_1.4/2.2  ABc_1.4/2.4  ABc_1.4/2.6  ABc_1.4/2.8  ABc_1.4/3.0  ABc_1.6/0.0  ABc_1.6/0.2
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   20  |  20    20  |  20    22  |  18    22  |  18    22  |  18    21  |  19    19  |  21    22  |  18    18  |  22    25  |  15
+--------------------------------------------------------------------------
+          Win Rate:      50.0%         50.0%         55.0%         55.0%         55.0%         52.5%         47.5%         55.0%         45.0%         62.5%
+
+There were 1.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.6/0.4  ABc_1.6/0.6  ABc_1.6/0.8  ABc_1.6/1.0  ABc_1.6/1.2  ABc_1.6/1.4  ABc_1.6/1.6  ABc_1.6/1.8  ABc_1.6/2.0  ABc_1.6/2.2
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   21  |  19    16  |  24    23  |  17    22  |  18    25  |  15    19  |  21    23  |  17    24  |  16    21  |  19    19  |  21
+--------------------------------------------------------------------------
+          Win Rate:      52.5%         40.0%         57.5%         55.0%         62.5%         47.5%         57.5%         60.0%         52.5%         47.5%
+
+There were 1.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.6/2.4  ABc_1.6/2.6  ABc_1.6/2.8  ABc_1.6/3.0  ABc_1.8/0.0  ABc_1.8/0.2  ABc_1.8/0.4  ABc_1.8/0.6  ABc_1.8/0.8  ABc_1.8/1.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   22  |  18    24  |  16    20  |  20    22  |  18    24  |  16    20  |  20    15  |  25    21  |  19    24  |  16    23  |  17
+--------------------------------------------------------------------------
+          Win Rate:      55.0%         60.0%         50.0%         55.0%         60.0%         50.0%         37.5%         52.5%         60.0%         57.5%
+
+There were 2.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_1.8/1.2  ABc_1.8/1.4  ABc_1.8/1.6  ABc_1.8/1.8  ABc_1.8/2.0  ABc_1.8/2.2  ABc_1.8/2.4  ABc_1.8/2.6  ABc_1.8/2.8  ABc_1.8/3.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   22  |  18    19  |  21    20  |  20    23  |  17    18  |  22    19  |  21    21  |  19    17  |  23    14  |  26    22  |  18
+--------------------------------------------------------------------------
+          Win Rate:      55.0%         47.5%         50.0%         57.5%         45.0%         47.5%         52.5%         42.5%         35.0%         55.0%
+
+There were 5.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.0/0.0  ABc_2.0/0.2  ABc_2.0/0.4  ABc_2.0/0.6  ABc_2.0/0.8  ABc_2.0/1.0  ABc_2.0/1.2  ABc_2.0/1.4  ABc_2.0/1.6  ABc_2.0/1.8
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   21  |  19    20  |  20    15  |  25    27  |  13    21  |  19    22  |  18    19  |  21    23  |  17    19  |  21    25  |  15
+--------------------------------------------------------------------------
+          Win Rate:      52.5%         50.0%         37.5%         67.5%         52.5%         55.0%         47.5%         57.5%         47.5%         62.5%
+
+There were 1.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.0/2.0  ABc_2.0/2.2  ABc_2.0/2.4  ABc_2.0/2.6  ABc_2.0/2.8  ABc_2.0/3.0  ABc_2.2/0.0  ABc_2.2/0.2  ABc_2.2/0.4  ABc_2.2/0.6
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   16  |  24    18  |  22    20  |  20    17  |  23    22  |  18    21  |  19    17  |  23    21  |  19    25  |  15    19  |  21
+--------------------------------------------------------------------------
+          Win Rate:      40.0%         45.0%         50.0%         42.5%         55.0%         52.5%         42.5%         52.5%         62.5%         47.5%
+
+There were 1.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.2/0.8  ABc_2.2/1.0  ABc_2.2/1.2  ABc_2.2/1.4  ABc_2.2/1.6  ABc_2.2/1.8  ABc_2.2/2.0  ABc_2.2/2.2  ABc_2.2/2.4  ABc_2.2/2.6
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   21  |  19    24  |  16    17  |  23    20  |  20    23  |  17    21  |  19    16  |  24    18  |  22    25  |  15    21  |  19
+--------------------------------------------------------------------------
+          Win Rate:      52.5%         60.0%         42.5%         50.0%         57.5%         52.5%         40.0%         45.0%         62.5%         52.5%
+
+There were 3.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.2/2.8  ABc_2.2/3.0  ABc_2.4/0.0  ABc_2.4/0.2  ABc_2.4/0.4  ABc_2.4/0.6  ABc_2.4/0.8  ABc_2.4/1.0  ABc_2.4/1.2  ABc_2.4/1.4
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   18  |  22    16  |  24    20  |  20    27  |  13    22  |  18    24  |  16    23  |  17    16  |  24    23  |  17    27  |  13
+--------------------------------------------------------------------------
+          Win Rate:      45.0%         40.0%         50.0%         67.5%         55.0%         60.0%         57.5%         40.0%         57.5%         67.5%
+
+There were 3.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.4/1.6  ABc_2.4/1.8  ABc_2.4/2.0  ABc_2.4/2.2  ABc_2.4/2.4  ABc_2.4/2.6  ABc_2.4/2.8  ABc_2.4/3.0  ABc_2.6/0.0  ABc_2.6/0.2
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   22  |  18    18  |  22    26  |  14    23  |  17    20  |  20    18  |  22    21  |  19    18  |  22    17  |  23    22  |  18
+--------------------------------------------------------------------------
+          Win Rate:      55.0%         45.0%         65.0%         57.5%         50.0%         45.0%         52.5%         45.0%         42.5%         55.0%
+
+There were 2.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.6/0.4  ABc_2.6/0.6  ABc_2.6/0.8  ABc_2.6/1.0  ABc_2.6/1.2  ABc_2.6/1.4  ABc_2.6/1.6  ABc_2.6/1.8  ABc_2.6/2.0  ABc_2.6/2.2
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   17  |  23    24  |  16    21  |  19    19  |  21    20  |  20    23  |  17    20  |  20    22  |  18    23  |  17    20  |  20
+--------------------------------------------------------------------------
+          Win Rate:      42.5%         60.0%         52.5%         47.5%         50.0%         57.5%         50.0%         55.0%         57.5%         50.0%
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.6/2.4  ABc_2.6/2.6  ABc_2.6/2.8  ABc_2.6/3.0  ABc_2.8/0.0  ABc_2.8/0.2  ABc_2.8/0.4  ABc_2.8/0.6  ABc_2.8/0.8  ABc_2.8/1.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   21  |  19    22  |  18    25  |  15    22  |  18    16  |  24    25  |  15    21  |  19    17  |  23    20  |  20    20  |  20
+--------------------------------------------------------------------------
+          Win Rate:      52.5%         55.0%         62.5%         55.0%         40.0%         62.5%         52.5%         42.5%         50.0%         50.0%
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_2.8/1.2  ABc_2.8/1.4  ABc_2.8/1.6  ABc_2.8/1.8  ABc_2.8/2.0  ABc_2.8/2.2  ABc_2.8/2.4  ABc_2.8/2.6  ABc_2.8/2.8  ABc_2.8/3.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   24  |  16    19  |  21    20  |  20    19  |  21    23  |  17    21  |  19    25  |  15    18  |  22    22  |  18    23  |  17
+--------------------------------------------------------------------------
+          Win Rate:      60.0%         47.5%         50.0%         47.5%         57.5%         52.5%         62.5%         45.0%         55.0%         57.5%
+
+There were 4.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_3.0/0.0  ABc_3.0/0.2  ABc_3.0/0.4  ABc_3.0/0.6  ABc_3.0/0.8  ABc_3.0/1.0  ABc_3.0/1.2  ABc_3.0/1.4  ABc_3.0/1.6  ABc_3.0/1.8
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   23  |  17    20  |  20    18  |  22    26  |  14    23  |  17    19  |  21    21  |  19    20  |  20    19  |  21    23  |  17
+--------------------------------------------------------------------------
+          Win Rate:      57.5%         50.0%         45.0%         65.0%         57.5%         47.5%         52.5%         50.0%         47.5%         57.5%
+
+There were 3.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
+
+                       *************************
+                            Playing Matches
+                       *************************
+
+Match #   Opponent    ABc_3.0/2.0  ABc_3.0/2.2  ABc_3.0/2.4  ABc_3.0/2.6  ABc_3.0/2.8  ABc_3.0/3.0
+                       Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost   Won | Lost
+   1     AB_Improved   19  |  21    23  |  17    25  |  15    21  |  19    24  |  16    22  |  18
+--------------------------------------------------------------------------
+          Win Rate:      47.5%         57.5%         62.5%         52.5%         60.0%         55.0%
+
+There were 3.0 timeouts during the tournament -- make sure your agent handles search timeout correctly, and consider increasing the timeout margin for your agent.
