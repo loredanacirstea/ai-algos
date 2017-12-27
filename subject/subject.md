@@ -110,3 +110,36 @@ Segmentally Boosted HMMs
 NP Hard Problem
 
 State Space | the space where all the possible states of a problem reside
+
+
+Deep Neural Networks
+Softmax
+One-Hot Encoding
+Maximum Likelihood
+Cross Entropy
+Categorical Cross Entropy
+Multi-Class Cross Entropy
+Logistic Regression
+Gradient Descent
+Stochastic Gradient Descent
+Continuous Perceptrons
+Feedforward
+Backpropagation
+Overfitting
+Underfitting
+Early Stopping
+Regularization
+Dropout
+Vanishing Gradient
+Local Minima
+Random Restart
+Momentum
+Nesterov Momentum
+Adaptive Moment Estimation (adam)
+Root Mean Squared Error Prop (RMSProp)
+Feature Map (Activation Map)
+Multi Layer Perceptrons
+Convolutional Neural Networks
+Convolutional Layer
+Max Pooling Layer
+Global Average Pooling Layer
